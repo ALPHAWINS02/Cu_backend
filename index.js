@@ -13,9 +13,15 @@ const errorHandler = require('./src/middlewares/errorHandler');
 const app = express();
 dotenv.config();
 
-app.use(cors({
-    origin: '*'
-}));
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  optionsSuccessStatus: 204 // Respond with 204 for preflight requests
+};
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
