@@ -18,9 +18,8 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
-  optionsSuccessStatus: 204 // Respond with 204 for preflight requests
+  optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-
 app.use(cors(corsOptions));
 
 app.use(bodyParser.urlencoded({ extended: false }));
